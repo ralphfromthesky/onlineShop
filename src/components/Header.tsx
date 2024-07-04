@@ -1,9 +1,10 @@
-import React from 'react'
-
 const Header = () => {
   return (
-    <div className='text-[red]'>Header</div>
-  )
-}
+    <div>
+      <div className="bg-color-1 h-[5rem] flex items-center text-[1.5rem] font-size[10rem]">Online Shop ni Gogo</div>
+      <div className="h-[2rem] bg-color-2"></div>
+    </div>
+  );
+};
 
-export default Header
+export default Header;
