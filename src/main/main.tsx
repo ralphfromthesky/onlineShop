@@ -12,8 +12,8 @@ const main = (props: any) => {
         <div>
           <Sidebar />
         </div>
-        <div  className="flex justify-center w-screen">
-          <div className="border-2 border-[red] w-[80vw] h-[80vh]">{props.children}</div>
+        <div  className="flex justify-center w-screen pt-[1rem]">
+          <div className="w-[80vw] border-2 border-color-1 h-[80vh] bg-[white]">{props.children}</div>
         </div>
       </div>
       <div>
