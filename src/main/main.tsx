@@ -2,7 +2,7 @@ import Header from "../components/Header";
 import Sidebar from "../components/sidebar";
 import Footer from "../components/footer";
 
-const main = (props: any) => {
+const Main = (props: any) => {
   return (
     <div className="flex flex-col w-screen h-screen">
       <div>
@@ -23,4 +23,4 @@ const main = (props: any) => {
   );
 };
 
-export default main;
+export default Main;
