@@ -1,6 +1,10 @@
 import Header from "../components/Header";
 import Sidebar from "../components/sidebar";
 import Footer from "../components/footer";
+import AntCarousel from "../antUI/carousel";
+import { NotificationOutlined} from "@ant-design/icons";
+
+
 
 const Main = (props: any) => {
   return (
@@ -12,8 +16,12 @@ const Main = (props: any) => {
         <div>
           <Sidebar />
         </div>
-        <div  className="flex justify-center w-screen pt-[1rem]">
-          <div className="w-[80vw] border-2 border-color-1 h-[80vh] bg-[white]">{props.children}</div>
+        <div className="flex justify-center w-screen pt-[1rem]">
+          <div className="w-[80vw] border-2 border-color-1 h-[80vh] bg-[white]">
+            <div className="px-[1rem] pt-[1rem]"><AntCarousel/></div>
+            <div className="mx-[1rem] my-[.5rem]"><span><NotificationOutlined className="text-[2rem] text-color-5"/></span><span></span></div>
+          <div> {props.children}</div>
+          </div>
         </div>
       </div>
       <div>
