@@ -30,6 +30,7 @@ const AntModal = (props: any) => {
         footer={null}
       >
         <div>
+          <div>{props.newTitle}</div>
             {props.componentPass ? props.componentPass : null}
         </div>
       </Modal>

@@ -12,6 +12,18 @@ export const postData = async (url: string, payload: string) => {
   return response
 };
 
+export const loginData = async (url: string, payload: string) => {
+  const response = await axios.post(`http://localhost:3000${url}`, payload, {
+    headers: {
+      // "Content-Type": "application/x-www-form-urlencoded",
+      // "X-Requested-With": "XMLHttpRequest",
+      "Content-Type": "application/json",  // Use JSON content type
+      "X-Requested-With": "XMLHttpRequest",
+    },
+  });
+  return response
+};
+
 // import axios from 'axios'
 // import { useMutation } from "@tanstack/vue-query";
 

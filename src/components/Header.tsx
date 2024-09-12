@@ -1,30 +1,30 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "antd";
-import { SearchOutlined, UserAddOutlined} from "@ant-design/icons";
+import { SearchOutlined, UserAddOutlined } from "@ant-design/icons";
 import { Input } from "antd";
 import AntModal from "../antUI/antModal";
-import SignInForm from "./form/signInForm";
-
-
-
+import LoginForm from "./form/loginForm";
+import RegisterForm from "./form/registerForm";
 
 const Header = () => {
-const [openModal, setOpenModal] = useState<boolean>(false)
-const closedModal = () => {
-  setOpenModal(false)
-}
+  const [openRegister, setRegister] = useState<boolean>(false);
+  const [openLogin, setOpenLogin] = useState<boolean>(false);
+  const closedLogin = () => {
+    setOpenLogin(false);
+  };
+
+  const closedRegister = () => {
+    setRegister(false)
+  }
  
   return (
     <div>
       <div className="flex bg-color-1 h-[8rem] justify-center items-cente w-[]">
         <div className=" w-[80vw] p-[.5rem]">
           <div className="flex justify-between">
-            <div className="flex gap-[.5rem]">
-          
-            </div>
-            <div className="flex gap-[.5rem]">
-            </div>
+            <div className="flex gap-[.5rem]"></div>
+            <div className="flex gap-[.5rem]"></div>
           </div>
           <div className="flex justify-between items-center">
             <div className=" flex items-center text-[1.5rem] font-size[10rem]">
@@ -40,10 +40,15 @@ const closedModal = () => {
                 Search
               </Button>
             </span>
-            <span className="w-[20rem] flex justify-end gap-3" onClick={()=> setOpenModal(true)}>
-            <UserAddOutlined className="text-[2rem]"/>
-
-            </span>
+            <div className="flex gap-2">
+              <span onClick={() => setOpenLogin(true)}>
+                {/* <UserAddOutlined className="text-[2rem]"/> */}
+                <Button>Log in </Button>
+              </span>
+              <span onClick={() => setRegister(true)}>
+                <Button>Register </Button>
+              </span>
+            </div>
           </div>
           <div className="flex justify-between">
             <div className="flex gap-[.5rem]">
@@ -66,14 +71,19 @@ const closedModal = () => {
           <span>Men's Wear</span>
           <span>Kid's Wear</span>
           <span>HardWare</span>
-      
         </div>
       </div>
       <AntModal
-      bukasOpen={openModal}
-      newTitle = "sign up"
-      sarado={closedModal}
-      componentPass={<SignInForm/>}
+        bukasOpen={openLogin}
+        newTitle="Login"
+        sarado={closedLogin}
+        componentPass={<LoginForm />}
+      />
+      <AntModal
+        bukasOpen={openRegister}
+        newTitle="Register form"
+        sarado={closedRegister}
+        componentPass={<RegisterForm />}
       />
     </div>
   );
