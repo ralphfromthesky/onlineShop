@@ -28,7 +28,7 @@ const Header = () => {
           </div>
           <div className="flex justify-between items-center">
             <div className=" flex items-center text-[1.5rem] font-size[10rem]">
-              Online Shoes shop ni Gogo Rigor
+              Online Shoes shop 
             </div>
             <span className="relative">
               <Input className="w-[50rem] h-[3rem]" />
