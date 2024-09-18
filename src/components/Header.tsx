@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "antd";
-import { SearchOutlined, UserAddOutlined } from "@ant-design/icons";
+import { SearchOutlined } from "@ant-design/icons";
+
 import { Input } from "antd";
 import AntModal from "../antUI/antModal";
 import LoginForm from "./form/loginForm";
 import RegisterForm from "./form/registerForm";
+import { useLogOut, axiosGet } from "../globalFunction/axios";
+import { useQuery } from "@tanstack/react-query";
+
 
 const Header = () => {
   const [openRegister, setRegister] = useState<boolean>(false);
@@ -17,6 +21,17 @@ const Header = () => {
   const closedRegister = () => {
     setRegister(false)
   }
+
+  const { refetch } = useQuery({
+    queryKey: ["userInfo"],
+    queryFn: () => axiosGet("/api/userInformation"),
+    select: (data) => {
+      console.log(data);
+     
+    },
+
+  });
+
  
   return (
     <div>
@@ -48,6 +63,10 @@ const Header = () => {
               <span onClick={() => setRegister(true)}>
                 <Button>Register </Button>
               </span>
+              <span >
+                <Button onClick={() => refetch()}>Log out </Button>
+              </span>
+
             </div>
           </div>
           <div className="flex justify-between">

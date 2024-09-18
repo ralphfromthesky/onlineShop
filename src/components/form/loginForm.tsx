@@ -1,25 +1,32 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Input } from "antd";
 import { Button } from "antd";
 import { useState } from "react";
-import { postData } from "../../globalFunction/axios";
+import { postData, axiosGet, useLogOut } from "../../globalFunction/axios";
 import AntMessage from "../../antUI/antMessage";
 
-
 const LoginForm = () => {
-  const [message, setMesage] = useState<string>('')
+  const [message, setMesage] = useState<string>("");
+  const [userData, setUserData] = useState<String>();
+  const client = useQueryClient();
 
   const [form, setForm] = useState<any>({
     username: "",
     password: "",
   });
 
+
+
+
   const { mutate: sendLogin } = useMutation({
     mutationFn: (payload: any) => postData("/api/userLogin", payload),
     onSuccess: (data) => {
-      setMesage(data.data?.content?.error[0]?.msg)
+      setMesage(data.data?.content?.error[0]?.msg);
+      if(data.data.success) {
+
+      }
     },
-  
+
     onError: (err: any) => console.log(`err: ${err}`),
   });
 
@@ -64,8 +71,7 @@ const LoginForm = () => {
           </div>
         </form>
       </div>
-      <AntMessage infoPass={message}/>
-
+      <AntMessage infoPass={message} />
     </div>
   );
 };

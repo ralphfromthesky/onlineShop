@@ -5,6 +5,7 @@ import Main from "./main/main";
 import Analytics from "./view/analytics";
 
 function App() {
+
   return (
     <BrowserRouter>
       <Routes>

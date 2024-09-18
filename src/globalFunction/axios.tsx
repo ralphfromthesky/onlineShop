@@ -13,16 +13,41 @@ export const postData = async (url: string, payload: string) => {
 };
 
 export const loginData = async (url: string, payload: string) => {
-  const response = await axios.post(`http://localhost:3000${url}`, payload, {
+  const response = await axios.post(`http://localhost:5174${url}`, payload, {
     headers: {
       // "Content-Type": "application/x-www-form-urlencoded",
       // "X-Requested-With": "XMLHttpRequest",
       "Content-Type": "application/json",  // Use JSON content type
       "X-Requested-With": "XMLHttpRequest",
     },
+    withCredentials: true
   });
   return response
 };
+
+export const axiosGet = async (url: any)  => {
+  try {
+    const response  = await axios.get(url);
+    if(response) {
+      return response.data
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const useLogOut = async () => {
+try {
+  const response = await axios.post('/api/userLogout')
+  if (response) {
+    return response
+  }
+} catch (error) {
+  console.log(error)
+}
+}
+
+
 
 // import axios from 'axios'
 // import { useMutation } from "@tanstack/vue-query";
@@ -78,13 +103,4 @@ export const loginData = async (url: string, payload: string) => {
 //   return response;
 // }
 
-// export function axiosGet(url, payload) {
-//   const response = axios.get(url, {
-//     params: payload,
-//     headers: {
-//       "Content-Type": "application/x-www-form-urlencoded",
-//       "X-Requested-With": "XMLHttpRequest",
-//     },
-//   });
-//   return response;
-// }
+

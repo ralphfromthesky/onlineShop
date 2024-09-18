@@ -1,8 +1,8 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation,  } from "@tanstack/react-query";
 import { Input } from "antd";
 import { Button } from "antd";
 import { useState } from "react";
-import { postData, loginData } from "../../globalFunction/axios";
+import { postData } from "../../globalFunction/axios";
 import AntMessage from "../../antUI/antMessage";
 
 
