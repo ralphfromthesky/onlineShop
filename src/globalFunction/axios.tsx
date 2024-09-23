@@ -13,7 +13,7 @@ export const postData = async (url: string, payload: string) => {
 };
 
 export const loginData = async (url: string, payload: string) => {
-  const response = await axios.post(`http://localhost:5174${url}`, payload, {
+  const response = await axios.post(`http://localhost:5173${url}`, payload, {
     headers: {
       // "Content-Type": "application/x-www-form-urlencoded",
       // "X-Requested-With": "XMLHttpRequest",
@@ -27,9 +27,11 @@ export const loginData = async (url: string, payload: string) => {
 
 export const axiosGet = async (url: any)  => {
   try {
-    const response  = await axios.get(url);
+    const response  = await axios.get(`http://localhost:3000${url}`, {
+    });
+    
     if(response) {
-      return response.data
+      return response.data;
     }
   } catch (error) {
     console.log(error)
@@ -46,6 +48,8 @@ try {
   console.log(error)
 }
 }
+
+
 
 
 

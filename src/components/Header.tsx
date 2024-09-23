@@ -7,7 +7,7 @@ import { Input } from "antd";
 import AntModal from "../antUI/antModal";
 import LoginForm from "./form/loginForm";
 import RegisterForm from "./form/registerForm";
-import { useLogOut, axiosGet } from "../globalFunction/axios";
+import { useLogOut, axiosGet} from "../globalFunction/axios";
 import { useQuery } from "@tanstack/react-query";
 
 
@@ -31,6 +31,13 @@ const Header = () => {
     },
 
   });
+
+  const {refetch: userStatus} = useQuery({
+    queryKey: ['userStatus'],
+    queryFn: () => axiosGet('/api/sample'),
+    select: (data) => {console.log(data)}
+
+  })
 
  
   return (
@@ -64,7 +71,7 @@ const Header = () => {
                 <Button>Register </Button>
               </span>
               <span >
-                <Button onClick={() => refetch()}>Log out </Button>
+                <Button onClick={() => refetch()}>fetch </Button>
               </span>
 
             </div>

@@ -23,7 +23,7 @@ const LoginForm = () => {
     onSuccess: (data) => {
       setMesage(data.data?.content?.error[0]?.msg);
       if(data.data.success) {
-
+        client.invalidateQueries({ queryKey: ["userInfo"] })
       }
     },
 
